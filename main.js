@@ -3,12 +3,17 @@ var maximumAsteroidOres = 6; //The maximum amount of asteroids we want to have i
 var activeMiningBelt = new Array(maximumAsteroidOres); //The current active belt the user is mining within
 var goldPerClick = 1; //The amount of gold per click the user will recieve per click
 var currentUpgrade = 1; //The current upgrade level of the user,
+
 var miningUpgrade = [ //Array used to currently store the tiers of mining
   10, //First upgrade 1->2
   25, //Second upgrade 2->3
   250 //Third Upgrade 3->4
 ];
-
+let playerOreQuantities = new Map();
+playerOreQuantities.set('Veldspar', 0);
+playerOreQuantities.set('Scordite', 0);
+playerOreQuantities.set('Pyroxis', 0);
+playerOreQuantities.set('Jaspet', 0);
 
 let oreStatistics = new Map(); //Creates a new map that is used to store all the ores that could possibly spawn
 oreStatistics.set(0,'Veldspar'); //Values are duplicated to simulate weighted chances, with some ores being more
@@ -67,12 +72,21 @@ function travelNewBelt(){ //Function used when the player wants to travel to a n
 function printCurrentBelt(){ //Function used to print out the current contents of the belt to the user
     document.getElementById("currentBeltDisplay").innerHTML = "This belt contains</br>"; //Get the element tagged currentBeltDisplay and begin to prompt the user about what they are about to see
     for (i=0; i < activeMiningBelt.length; i++){ //For each element in the array
-        document.getElementById("currentBeltDisplay").innerHTML += activeMiningBelt[i].oreName + ": " + activeMiningBelt[i].oreQuantity + " units</br>"; //Display out to the user the name of the ore and the quantity it has
+        document.getElementById("currentBeltDisplay").innerHTML += activeMiningBelt[i].oreName + ": " + activeMiningBelt[i].oreQuantity + " units <button onclick=\"mineOre(" + i + ")\">Mine</button></br>"; //Display out to the user the name of the ore and the quantity it has
     }
 }
 
-function mineOre() { //General function the player uses to mine ore, currently a placeholder
-    //updatePlayerOre();
+function mineOre(orePositionNumber) { //General function the player uses to mine ore, currently a placeholder
+    if(activeMiningBelt[orePositionNumber].oreQuantity > 0){ //As long as the rock has ore to be mined from it...
+        console.log("Before mining: " + activeMiningBelt[orePositionNumber].oreQuantity);
+        activeMiningBelt[orePositionNumber].oreQuantity -= 1; //Subtract one from the available ore to be mined
+        console.log("After mining: " + activeMiningBelt[orePositionNumber].oreQuantity);
+        playerOreQuantities.set(activeMiningBelt[orePositionNumber].oreName, (playerOreQuantities.get(activeMiningBelt[orePositionNumber].oreName) + 1)); //Add the amount to he users amount (set the value based on the ore name of the ore, and set the amount of ore owned by the player based on the name to increment by 1)
+        console.log("Successfully mined!");
+    }
+
+    printCurrentBelt();
+    updatePlayerOre();
 }
 
 function getByValue(map, searchValue) { //Javascript function used to find the key based on the value
@@ -83,6 +97,12 @@ function getByValue(map, searchValue) { //Javascript function used to find the k
   }
 
 function updatePlayerOre(){ //Function used to update the players ore display when the aquire new ore, currently a placeholder
+    document.getElementById("playerConsole").innerHTML = "My Ore Inventory:</br>";
+    document.getElementById("playerConsole").innerHTML += "Veldspar: " + playerOreQuantities.get('Veldspar') + "</br>";
+    document.getElementById("playerConsole").innerHTML += "Scordite: " + playerOreQuantities.get('Scordite') + "</br>";
+    document.getElementById("playerConsole").innerHTML += "Pyroxis: " + playerOreQuantities.get('Pyroxis') + "</br>";
+    document.getElementById("playerConsole").innerHTML += "Jaspet: " + playerOreQuantities.get('Jaspet') + "</br>";
+
 }
 
 function purchaseMiningUpgrade(){ //Function used for upgrading the users mining abilities, currently outdated from test phase
