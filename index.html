@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
 <html>
-
   <head>
+    <link rel="stylesheet" href="style.css">
     <title>Rockem Munchem</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
+  <body  onload="updatePlayerOre(); travelNewBelt();">
+    <div class="menu">
+      <button onclick="travelNewBelt()">Travel to New Belt</button>
+      <button onclick="purchaseMiningAssistant()" id="upgradeButton">Build Mining Assistant</button>
+      </div>
+    <div class="belt"><p id="currentBeltDisplay"></p></div>
+    
+    <di style="display: table">
+      <div class="upgrade"><p id="upgradeMaterials"></p></div>
+    <div class="inventory"><p id="playerConsole"></p></div>
 
-  <body>
-
-    <p id="currentBeltDisplay"></p>
-    <button onclick="travelNewBelt()">Travel to New Belt</button>
-    <button onclick="purchaseMiningUpgrade()">Upgrade Miner</button>
-    <p id="playerConsole"></p>
+    </div>
+    
     <script src="main.js"></script>
   </body>
-
 </html>

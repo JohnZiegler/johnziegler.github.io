@@ -1,0 +1,25 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.inventory {
+    display: inline-block;
+    color: white;
+    width: 200px;
+    height: 150px;
+    
+}
+
+.upgrade{
+    display: inline-block;
+    justify-content: right;
+}
+
+.belt {
+    color: white;
+}
+
+.menu {
+    display: inline;
+}
