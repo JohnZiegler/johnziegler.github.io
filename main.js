@@ -45,30 +45,27 @@ class miningAssistant { //Creates a miningAssistant class which is the blueprint
         this.minerCount = 0; //Variable used to count the amount of miningAssistant the player has purchase, is increased with increaseMinerQuantity()
         this.upgradeSpeed = 1; //Variable used to hold the frequency of mining activities for the autoMiners, is increased with increaseMinerSpeed()
     }
-
-    increaseMinerCount(){ //Function used to increase the amount of miningAssistant in the belt
-        this.minerCount++; //Increase the miner count by one
-        for (i = 0; i < maximumOreTypes; i++) { //For each of the ore types that exist...
-            recalculateUpgradeCost(); //Create a new upgrade cost for the player
-            statusAutoMiningEnabled = true; //Enable the ability to autoMine
-        }
-    }
-    increaseMinerSpeed(){ //Function used to increase the speed of miningAssistant
-        this.upgradeSpeed++; //Increase the miner speed by one
-        for (i = 0; i < maximumOreTypes; i++) { //For each of the ore types that exist...
-            recalculateUpgradeCost(); //Create a new upgrade cost for the player
-        }
-    }
     recalculateUpgradeCost(){ //Function used to recalculate the upgrade cost when the player purchases an upgrade
         for (i = 0; i < maximumOreTypes; i++) { //For each of the ore types that exist...
             this.upgradeCost[i] = Math.ceil(this.upgradeCost[i] * 1.10); //Create a new upgrade cost for the player
         }
     }
+
+    increaseMinerCount(){ //Function used to increase the amount of miningAssistant in the belt
+        this.minerCount++; //Increase the miner count by one
+            this.recalculateUpgradeCost(); //Create a new upgrade cost for the player
+            statusAutoMiningEnabled = true; //Enable the ability to autoMine
+    }
+    increaseMinerSpeed(){ //Function used to increase the speed of miningAssistant
+        this.upgradeSpeed++; //Increase the miner speed by one
+            this.recalculateUpgradeCost(); //Create a new upgrade cost for the player
+    }
+
     initialUpgradeCost() { //Function used to set the initial upgrade cost of the upgrades, in ore prices
         var i = 0;
         for (i = 0; i < maximumOreTypes; i++) { //For each of the ores that exist...
-            //this.upgradeCost[i] = 1; //Test line to speed up testing of upgrades and debug
-            this.upgradeCost[i] = (i + 1) * 5; //Sets the base upgrades based on this formula, currently a placeholder
+            this.upgradeCost[i] = 1; //Test line to speed up testing of upgrades and debug
+            //this.upgradeCost[i] = (i + 1) * 5; //Sets the base upgrades based on this formula, currently a placeholder
             console.log("Upgrade cost for slot " + i + ": " + this.upgradeCost[i]);
         }
     }
