@@ -64,8 +64,8 @@ class miningAssistant { //Creates a miningAssistant class which is the blueprint
     initialUpgradeCost() { //Function used to set the initial upgrade cost of the upgrades, in ore prices
         var i = 0;
         for (i = 0; i < maximumOreTypes; i++) { //For each of the ores that exist...
-            this.upgradeCost[i] = 1; //Test line to speed up testing of upgrades and debug
-            //this.upgradeCost[i] = (i + 1) * 5; //Sets the base upgrades based on this formula, currently a placeholder
+            //this.upgradeCost[i] = 1; //Test line to speed up testing of upgrades and debug
+            this.upgradeCost[i] = (i + 1) * 5; //Sets the base upgrades based on this formula, currently a placeholder
             console.log("Upgrade cost for slot " + i + ": " + this.upgradeCost[i]);
         }
     }
