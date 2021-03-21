@@ -1,6 +1,6 @@
 // #region Variables and Game Data
 var playerBalance = 0; //Variable used to store the amount of currency or money the player has
-var maximumAsteroidOres = 6; //The maximum amount of asteroids we want to have in any given belt at any given time
+var maximumAsteroidOres = 18; //The maximum amount of asteroids we want to have in any given belt at any given time
 var ORE_LEVEL_0 = 'Veldspar';
 var ORE_LEVEL_1 = 'Scordite';
 var ORE_LEVEL_2 = 'Pyroxis';
