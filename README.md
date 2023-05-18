@@ -7,4 +7,4 @@ Rockem Munchem was created during an 8 hour indie game development jam. The prem
 To begin, you can start by clicking on different rocks to mine and collect them. With enough minerals, you can purchase upgrades and increase the amount of ore you can mine in a short amount of time.
 
 ## Link
-sadrunslive.github.io
+[Play now!](sadrunslive.github.io)
